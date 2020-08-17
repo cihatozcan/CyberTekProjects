@@ -8,6 +8,9 @@ public class ch4 {
     public static void main(String[] args) {
         System.out.println(factoriel(5));
         System.out.println(frequencyOfChars("ali veli kirk dokuz elli"));
+        String s="javaxjava";
+        System.out.println(s.contains("java"));
+
 
     }
     public static int factoriel(int x){

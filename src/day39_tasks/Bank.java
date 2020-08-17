@@ -25,6 +25,15 @@ public class Bank {
     int AccountNumber;
     double balance;
 
+    @Override
+    public String toString() {
+        return "Apple Bank" +
+                "AccountHolder='" + AccountHolder + '\'' +
+                ", AccountNumber=" + AccountNumber +
+                ", balance=" + balance +
+                '}';
+    }
+
     public void showBalance(){
         System.out.println("Account name: "+AccountHolder);
         System.out.println("Account number: "+AccountNumber);
@@ -37,9 +46,9 @@ public class Bank {
     public void withdraw(double withdraw){
         if(this.balance>0){
             if(this.balance<withdraw){
-                balance-=35;
+                balance-=35+withdraw;
             }
-        this.balance-=withdraw;
+       // this.balance-=withdraw;
         }
         else{
             System.out.println("There is no suffiencent funds");

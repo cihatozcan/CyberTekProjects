@@ -13,19 +13,19 @@ public class BankApp {
         arr.add(account1);
         arr.add(account2);
         arr.add(account3);
-        int countforAccount=0;
-        while(3>countforAccount) {
+        int countAttemps=0;      //count the attemps of unvalid Acc
+        while(3>countAttemps) {
 
             System.out.println("What is your accname?");
             String x = scan.next();
             System.out.println("What is the account number?");
             int y = scan.nextInt();
-            boolean result = true;
-            int count = 0;
-            for (Bank each : arr) {
+            boolean result = true;                           // Boolean for controlling while loop
+            int count = 0;                                  // count if Accountname and password is found in the list
+            for (Bank each : arr) {                         // this will loop every each account in the list
                 if (each.AccountNumber == y && each.AccountHolder.equalsIgnoreCase(x)) {
                     count++;
-                    while (result) {
+                    while (result) { //this will keep continue the ask the user what they would like to do until they press 4
                         System.out.println("1. withdraw money");
                         System.out.println("2. deposit money");
                         System.out.println("3. show balance");
@@ -35,7 +35,16 @@ public class BankApp {
                             case 1:
                                 System.out.println("How much want to withdraw?");
                                 double a = scan.nextDouble();
+                                if(a>each.balance){
+                                    System.out.println("Amount is greater than your balance. Penalty fee will be added" +
+                                            "Do you wish to continue? T/F");//Early warning for penalty
+                                    boolean w=scan.nextBoolean();
+                                    if(w){
+                                        each.withdraw(a);
+                                    }
+                                }else{
                                 each.withdraw(a);
+                                }
                                 break;
                             case 2:
                                 System.out.println("How much want to deposit");
@@ -56,12 +65,13 @@ public class BankApp {
             }
             if (count != 1) {
                 System.out.println("Invalid Acc");
-                countforAccount++;
-                System.out.println(countforAccount+". attempt unsuccessfull ");
+                countAttemps++;                                            //Count the invalid attempts
+                System.out.println(countAttemps+". attempt unsuccessfull ");
 
             }
 
+        }if(countAttemps==3) {
+            System.out.println("You have to wait 30 min to process again"); //Reaches this line block if the count of attemps exceed 3
         }
-        System.out.println("You have to wait 30 min to process again");
     }
 }
