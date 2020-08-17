@@ -26,4 +26,10 @@ public class GroceryItemOrder {
     public void setQuantity(int quantity){
         this.itemquantity=quantity;
     }
+    public boolean isVegetable(){
+        if(this.name.equalsIgnoreCase("eggplant")||this.name.equalsIgnoreCase("patatoes")){
+            return true;
+        }
+       return false;
+    }
 }

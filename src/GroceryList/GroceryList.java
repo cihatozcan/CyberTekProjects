@@ -14,23 +14,44 @@ public class GroceryList {
      . Assume that a grocery list will have no more than 10 items. A GroceryList object should
      have the following methods:
      */
-    GroceryItemOrder[] grocery= new GroceryItemOrder[10];
-    int i=0;
+    GroceryItemOrder[] grocery= new GroceryItemOrder[10000000]; //Array field name initilazied to 10;
+    int i=0;//i=1,
+   // {null,null,null,null,null,null,null,null,null}
+   // {int itemquantity;
+    //    String name;
+    //    double price;,
 
+    /**
+     * gets the index number
+     * @return
+     */
     public int getI() {
         return i;
     }
 
+    /**
+     * empty constructor
+     */
     public GroceryList(){
     }
+
+    /**
+     * adds items to list which initilazed in the begining of this class to size 10
+     * @param item
+     */
     public void add(GroceryItemOrder item){
       this.grocery[i]=item;
       i++;
     }
+
+    /**
+     * sums the prices of items in the list
+     * @return
+     */
     public double getTotalCost(){
         double total=0;
         for (int k= 0; k <this.getI(); k++) {
-            total+=this.grocery[k].price*this.grocery[k].itemquantity;
+            total+=this.grocery[k].getCost();
         }
         return total;
     }

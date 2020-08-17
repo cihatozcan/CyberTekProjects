@@ -6,9 +6,7 @@ import java.util.Scanner;
 public class GroceryMain {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        GroceryList newlist = new GroceryList();
-        GroceryItemOrder patates = new GroceryItemOrder("Patates",12,10);
-        System.out.println(patates.getCost());
+        GroceryList tomThumb = new GroceryList();
         System.out.println("How many items in the list?");
         int size=scan.nextInt();
         for (int i = 0; i <size ; i++) {
@@ -17,10 +15,12 @@ public class GroceryMain {
             int quantity = scan.nextInt();
             double price = scan.nextDouble();
             GroceryItemOrder item = new GroceryItemOrder(name,quantity,price);
-            newlist.add(item);
-
+           tomThumb.add(item);
         }
-        newlist.getList(0).setQuantity(0);
-        System.out.println("Total cost:"+newlist.getTotalCost());
+        System.out.println(tomThumb.getList(0).isVegetable());
+        for (int i = 0; i < tomThumb.getI() ; i++) {
+            System.out.println(tomThumb.getList(i).name);
+        }
+        System.out.println("Total cost:"+tomThumb.getTotalCost());
     }
 }
